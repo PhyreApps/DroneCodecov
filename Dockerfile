@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM --platform=linux/amd64 alpine:latest
 
 RUN apk upgrade --no-cache && apk add --no-cache bash curl git coreutils ca-certificates
 RUN curl -L https://codecov.io/bash > codecov && \
