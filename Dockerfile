@@ -5,6 +5,6 @@ RUN curl -L https://codecov.io/bash > codecov && \
     chmod +x codecov && \
     mv ./codecov /bin
 
-ADD ./entrypoint.sh /bin
+COPY entrypoint.sh entrypoint.sh
 
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["sh","/entrypoint.sh"]
