@@ -62,12 +62,8 @@ if [[ $PLUGIN_DEBUG = "true" ]]; then
     echo "-- DEBUG: codecov $token $sfiles $sflags $branch $commit $pr $buildnum $tag"
 fi
 
-exitcode=`codecov -Z $token $sfiles $sflags \
-    $branch \
-    $commit \
-    $pr \
-    $buildnum \
-    $tag &> output.log; echo $?`
+exitcode=`codecov --verbose upload-process --fail-on-error -t $token -n 'service'-$buildnum -F service -f $sfiles &> output.log; echo $?`
+
 
 if [[ $PLUGIN_DEBUG = "true" ]]; then
     cat output.log

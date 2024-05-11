@@ -1,9 +1,10 @@
 FROM --platform=linux/amd64 alpine:latest
 
 RUN apk upgrade --no-cache && apk add --no-cache bash curl git coreutils ca-certificates
-RUN curl -L https://codecov.io/bash > codecov && \
-    chmod +x codecov && \
-    mv ./codecov /bin
+
+RUN curl -Os https://cli.codecov.io/latest/linux/codecov
+RUN chmod +x codecov
+RUN mv codecov /bin/codecov
 
 ADD ./entrypoint.sh /bin
 
